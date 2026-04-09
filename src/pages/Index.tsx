@@ -7,7 +7,7 @@ const KIDS_IMG = "https://cdn.poehali.dev/projects/5677d6d2-a4f7-4a68-86b2-fdefc
 const LOGO = "https://cdn.poehali.dev/projects/5677d6d2-a4f7-4a68-86b2-fdefc661cf12/bucket/79efd1ce-1753-462d-8110-f090acd91938.png";
 
 const NAV_ITEMS = [
-  { id: "about", label: "О федерации" },
+  { id: "about", label: "Об организации" },
   { id: "directions", label: "Направления" },
   { id: "calendar", label: "Календарь" },
   { id: "news", label: "Новости" },
@@ -15,6 +15,21 @@ const NAV_ITEMS = [
   { id: "docs", label: "Документы" },
   { id: "partners", label: "Партнёры" },
   { id: "contacts", label: "Контакты" },
+];
+
+const PARTNERS = [
+  "FORSAGE RACING TEAM",
+  "FMKS — Федерация мотоспорта",
+  "Administration of Gelendzhik",
+  "Минспорта Краснодарского края",
+  "KTM Russia",
+  "Husqvarna Motorcycles",
+  "Yamaha Motor",
+  "Motul",
+  "Shot Racing",
+  "Leatt",
+  "Rockstar Energy",
+  "GoPro",
 ];
 
 const DIRECTIONS = [
@@ -86,18 +101,18 @@ const EVENTS_2026: {
 ];
 
 const NEWS = [
-  { date: "14.07.2023", tag: "Организация", title: "Федерация прошла государственную регистрацию", excerpt: "Геленджикская городская общественная организация «Федерация мотоциклетного и квадроциклетного спорта» официально зарегистрирована. ОГРН 1232300040939." },
-  { date: "Новость уточняется", tag: "Экстрим-парк", title: "Ведётся работа над проектом Экстрим-парка Геленджик", excerpt: "Федерация развивает концепцию многофункциональной спортивной площадки. Детали проекта дополняются по мере согласования." },
+  { date: "14.07.2023", tag: "Организация", title: "Организация прошла государственную регистрацию", excerpt: "Геленджикская городская общественная организация «Федерация мотоциклетного и квадроциклетного спорта» официально зарегистрирована. ОГРН 1232300040939." },
+  { date: "Новость уточняется", tag: "Экстрим-парк", title: "Ведётся работа над проектом Экстрим-парка Геленджик", excerpt: "Организация развивает концепцию многофункциональной спортивной площадки. Детали проекта дополняются по мере согласования." },
   { date: "Новость уточняется", tag: "Детский спорт", title: "Формирование программы детско-юношеских тренировок", excerpt: "Готовится программа тренировок и соревнований для детей и подростков. Подробности и расписание будут опубликованы позже." },
 ];
 
-const DOCS = [
-  { icon: "FileText", title: "Свидетельство о регистрации", desc: "Официальный документ государственной регистрации организации" },
-  { icon: "FileText", title: "Устав федерации", desc: "Основной документ, определяющий цели, задачи и порядок деятельности" },
-  { icon: "Shield", title: "Политика конфиденциальности", desc: "Условия обработки персональных данных пользователей сайта" },
-  { icon: "CheckSquare", title: "Согласие на обработку ПД", desc: "Форма согласия на обработку персональных данных" },
-  { icon: "ClipboardList", title: "Положения о мероприятиях", desc: "Регламенты и положения для проводимых соревнований и событий" },
-  { icon: "Download", title: "Формы заявок", desc: "Бланки для участия в мероприятиях и вступления в федерацию" },
+const DOCS_AVAILABLE = [
+  { icon: "FileCheck", title: "Свидетельство о регистрации" },
+  { icon: "ScrollText", title: "Устав организации" },
+  { icon: "Shield", title: "Политика конфиденциальности" },
+  { icon: "CheckSquare", title: "Согласие на обработку персональных данных" },
+  { icon: "ClipboardList", title: "Положения и регламенты мероприятий" },
+  { icon: "FileSignature", title: "Формы заявок и анкет" },
 ];
 
 function scrollTo(id: string) {
@@ -137,7 +152,7 @@ export default function Index() {
   };
 
   const formTitles: Record<string, string> = {
-    member: "Стать участником федерации",
+    member: "Стать участником организации",
     partner: "Стать партнёром",
     event: "Заявка на мероприятие",
     question: "Задать вопрос",
@@ -184,7 +199,7 @@ export default function Index() {
             ))}
             <button onClick={() => { setActiveForm("member"); setMenuOpen(false); }}
               className="mt-4 w-full bg-[#c8102e] text-white py-3 font-oswald tracking-wider uppercase text-sm rounded-sm">
-              Вступить в федерацию
+              Стать участником
             </button>
           </div>
         )}
@@ -206,7 +221,8 @@ export default function Index() {
             </div>
 
             <h1 className="font-oswald text-5xl sm:text-6xl lg:text-7xl font-bold uppercase leading-none tracking-tight mb-6">
-              Федерация<br />
+              Общественная<br />
+              организация<br />
               <span className="text-[#c8102e]">мотоциклетного</span><br />
               и квадроциклетного<br />
               спорта
@@ -217,9 +233,9 @@ export default function Index() {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <button onClick={() => scrollTo("about")}
+              <button onClick={() => setActiveForm("member")}
                 className="bg-[#c8102e] hover:bg-[#a50d25] text-white font-oswald uppercase tracking-widest text-sm px-8 py-4 transition-all duration-200 hover:scale-105">
-                О федерации
+                Стать участником
               </button>
               <button onClick={() => scrollTo("park")}
                 className="border border-white/30 hover:border-white text-white font-oswald uppercase tracking-widest text-sm px-8 py-4 transition-all duration-200 hover:bg-white/5">
@@ -257,7 +273,7 @@ export default function Index() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <div className="h-px w-12 bg-[#c8102e] mb-5" />
-              <h2 className="font-oswald text-4xl sm:text-5xl font-bold uppercase tracking-tight text-white">О федерации</h2>
+              <h2 className="font-oswald text-4xl sm:text-5xl font-bold uppercase tracking-tight text-white">Об организации</h2>
               <p className="text-[#9e9e9e] text-lg leading-relaxed mt-6 mb-5">
                 Геленджикская городская общественная организация «Федерация мотоциклетного и квадроциклетного спорта» (НКО «ФМКСГ») зарегистрирована 14.07.2023 для системного развития мотоспорта в Геленджике и Краснодарском крае.
               </p>
@@ -272,7 +288,7 @@ export default function Index() {
                   { icon: "Award", title: "Официальный статус", desc: "Государственная регистрация" },
                   { icon: "Users", title: "Детский спорт", desc: "Секции с 5 лет" },
                   { icon: "ShieldCheck", title: "Безопасность", desc: "Стандарты и контроль" },
-                  { icon: "Handshake", title: "Партнёрство", desc: "Власть, бизнес, федерации" },
+                  { icon: "Handshake", title: "Партнёрство", desc: "Власть, бизнес и сообщество" },
                 ].map(f => (
                   <div key={f.title} className="bg-[#1a1a1a] border border-white/5 rounded-sm p-4 hover:border-[#c8102e]/30 transition-colors">
                     <Icon name={f.icon} size={22} className="text-[#c8102e] mb-2" />
@@ -297,7 +313,7 @@ export default function Index() {
                     "Строительство спортивной инфраструктуры",
                     "Продвижение культуры безопасной езды",
                     "Событийный туризм и территориальное развитие",
-                    "Взаимодействие с властью и федерациями",
+                    "Взаимодействие с органами власти и партнёрами",
                   ].map(m => (
                     <div key={m} className="flex items-start gap-3">
                       <div className="w-1.5 h-1.5 bg-[#c8102e] rounded-full mt-2 shrink-0" />
@@ -317,7 +333,7 @@ export default function Index() {
           <div className="text-center mb-14">
             <div className="flex justify-center mb-4"><div className="h-px w-10 bg-[#c8102e]" /></div>
             <h2 className="font-oswald text-4xl sm:text-5xl font-bold uppercase tracking-tight text-white">Направления деятельности</h2>
-            <p className="text-[#6b6b6b] mt-4 max-w-xl mx-auto text-sm">Федерация охватывает все ключевые дисциплины мотоциклетного и квадроциклетного спорта</p>
+            <p className="text-[#6b6b6b] mt-4 max-w-xl mx-auto text-sm">Организация охватывает все ключевые дисциплины мотоциклетного и квадроциклетного спорта</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
             {DIRECTIONS.map((d) => (
@@ -513,7 +529,7 @@ export default function Index() {
                 Экстрим-парк<br /><span className="text-[#c8102e]">Геленджик</span>
               </h2>
               <p className="text-[#9e9e9e] text-lg leading-relaxed mt-6 mb-6">
-                Флагманский проект федерации — создание многофункциональной спортивной площадки в Геленджике. Объект призван стать центром притяжения для спортсменов, туристов и семей с детьми.
+                Флагманский проект организации — создание многофункциональной спортивной площадки в Геленджике. Объект призван стать центром притяжения для спортсменов, туристов и семей с детьми.
               </p>
               <div className="space-y-3 mb-8">
                 {[
@@ -553,7 +569,7 @@ export default function Index() {
                 Детский спорт<br />и безопасность
               </h2>
               <p className="text-[#9e9e9e] text-lg leading-relaxed mt-6 mb-6">
-                Одно из ключевых направлений федерации — развитие детско-юношеского мотоспорта. Мы создаём безопасную профессиональную среду, где дети с 5 лет могут начать спортивный путь под руководством опытных тренеров.
+                Одно из ключевых направлений организации — развитие детско-юношеского мотоспорта. Мы создаём безопасную профессиональную среду, где дети с 5 лет могут начать спортивный путь под руководством опытных тренеров.
               </p>
               <div className="grid grid-cols-2 gap-4 mb-8">
                 {[
@@ -588,31 +604,41 @@ export default function Index() {
           <div className="mb-14">
             <div className="h-px w-12 bg-[#c8102e] mb-5" />
             <h2 className="font-oswald text-4xl sm:text-5xl font-bold uppercase tracking-tight text-white">Документы</h2>
-            <p className="text-[#6b6b6b] mt-4 max-w-lg text-sm">Официальные документы, регламенты, формы заявок и нормативная база федерации</p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              <Placeholder>Файлы PDF — требуют загрузки</Placeholder>
-            </div>
+            <p className="text-[#9e9e9e] mt-4 max-w-2xl text-sm leading-relaxed">
+              Официальные документы организации (устав, свидетельство о регистрации, положения, регламенты, формы заявок) <span className="text-white font-medium">готовы предоставить по запросу</span>. Отправьте заявку через форму или напишите нам на почту.
+            </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {DOCS.map(doc => (
-              <div key={doc.title} className="bg-[#141414] border border-white/5 hover:border-[#c8102e]/30 p-5 rounded-sm group cursor-pointer transition-all flex items-start gap-4">
-                <div className="w-10 h-10 bg-[#c8102e]/10 group-hover:bg-[#c8102e]/20 rounded-sm flex items-center justify-center shrink-0 transition-colors">
-                  <Icon name={doc.icon} size={20} className="text-[#c8102e]" />
-                </div>
-                <div>
-                  <div className="font-oswald text-white text-sm uppercase tracking-wide group-hover:text-[#c8102e] transition-colors">{doc.title}</div>
-                  <div className="text-[#6b6b6b] text-xs mt-1 leading-relaxed">{doc.desc}</div>
-                  <div className="mt-2 text-[10px] text-[#c8102e] font-oswald uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">Скачать →</div>
-                </div>
+
+          <div className="grid lg:grid-cols-[1fr_1fr] gap-6 items-start">
+            <div className="bg-[#141414] border border-white/5 rounded-sm p-8">
+              <div className="font-oswald text-xs text-[#c8102e] uppercase tracking-widest mb-4">Перечень документов</div>
+              <div className="space-y-3">
+                {DOCS_AVAILABLE.map(doc => (
+                  <div key={doc.title} className="flex items-center gap-3 py-2 border-b border-white/5 last:border-0">
+                    <Icon name={doc.icon} fallback="FileText" size={16} className="text-[#c8102e] shrink-0" />
+                    <span className="text-[#e8e8e8] text-sm">{doc.title}</span>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-          <div className="mt-8 p-6 border border-dashed border-white/10 rounded-sm text-center">
-            <p className="text-[#6b6b6b] text-sm">Не нашли нужный документ? Запросите его напрямую.</p>
-            <button onClick={() => setActiveForm("question")}
-              className="mt-3 text-sm text-[#c8102e] border border-[#c8102e]/30 hover:border-[#c8102e] px-6 py-2 rounded transition-colors font-oswald uppercase tracking-wider">
-              Задать вопрос
-            </button>
+            </div>
+
+            <div className="bg-gradient-to-br from-[#c8102e]/10 to-[#141414] border border-[#c8102e]/30 rounded-sm p-8">
+              <Icon name="FileSearch" fallback="FileText" size={28} className="text-[#c8102e] mb-4" />
+              <div className="font-oswald text-xl text-white uppercase tracking-wide mb-3">Запросить документы</div>
+              <p className="text-[#9e9e9e] text-sm leading-relaxed mb-6">
+                Если вам необходимы официальные документы организации — отправьте запрос. Мы оперативно предоставим все необходимые материалы.
+              </p>
+              <div className="space-y-3">
+                <button onClick={() => setActiveForm("question")}
+                  className="w-full bg-[#c8102e] hover:bg-[#a50d25] text-white font-oswald uppercase tracking-widest text-sm px-6 py-4 transition-all">
+                  Запросить документы
+                </button>
+                <a href="mailto:albert@av-prod.ru"
+                  className="w-full block text-center border border-white/20 hover:border-white text-white font-oswald uppercase tracking-widest text-xs px-6 py-3 transition-all">
+                  albert@av-prod.ru
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -627,15 +653,15 @@ export default function Index() {
               <p className="text-[#9e9e9e] mt-6 mb-8 leading-relaxed">
                 Мы открыты к сотрудничеству с органами власти, государственными структурами, бизнесом, брендами, медиа и общественными организациями.
               </p>
-              <div className="grid grid-cols-3 gap-3 mb-6">
-                {[...Array(6)].map((_, i) => (
-                  <div key={i} className="bg-[#141414] border border-white/5 h-20 rounded-sm flex items-center justify-center text-[#3a3a3a] text-xs font-oswald uppercase tracking-wider hover:border-white/10 transition-colors">
-                    Партнёр {i + 1}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-6">
+                {PARTNERS.map((p) => (
+                  <div key={p} className="bg-[#141414] border border-white/5 h-16 rounded-sm flex items-center justify-center text-center px-3 text-[#9e9e9e] text-[11px] font-oswald uppercase tracking-wider hover:border-[#c8102e]/30 hover:text-white transition-all">
+                    {p}
                   </div>
                 ))}
               </div>
               <div className="flex flex-wrap gap-2">
-                <Placeholder>Логотипы партнёров — требуют согласования</Placeholder>
+                <Placeholder>Логотипы — по согласованию</Placeholder>
               </div>
             </div>
 
@@ -645,7 +671,7 @@ export default function Index() {
                 Для партнёров<br />и инвесторов
               </h2>
               <p className="text-[#9e9e9e] mt-6 mb-6 leading-relaxed">
-                Федерация предлагает партнёрам и инвесторам возможности для участия в развитии мотоспорта, событийного туризма и спортивной инфраструктуры Геленджика.
+                Организация предлагает партнёрам и инвесторам возможности для участия в развитии мотоспорта, событийного туризма и спортивной инфраструктуры Геленджика.
               </p>
               <div className="space-y-3 mb-8">
                 {[
@@ -684,13 +710,13 @@ export default function Index() {
               <div className="h-px w-12 bg-[#c8102e] mb-5" />
               <h2 className="font-oswald text-4xl sm:text-5xl font-bold uppercase tracking-tight text-white">Контакты</h2>
               <p className="text-[#9e9e9e] mt-6 mb-10 leading-relaxed">
-                Федерация открыта для всех — спортсменов, родителей, организаций, инвесторов и партнёров.
+                Организация открыта для всех — спортсменов, родителей, организаций, инвесторов и партнёров.
               </p>
               <div className="space-y-5">
                 {[
                   { icon: "MapPin", label: "Адрес", value: "353460, Россия, Краснодарский край,\nг. Геленджик, ул. Тельмана, д. 146, помещ. 3" },
-                  { icon: "Mail", label: "Email", value: "accounting-dep@groupgrand.ru" },
-                  { icon: "Phone", label: "Телефон", value: "8 (938) 4444-529" },
+                  { icon: "Mail", label: "Email", value: "albert@av-prod.ru" },
+                  { icon: "Phone", label: "Телефон", value: "+7 (926) 841-75-25" },
                   { icon: "User", label: "Президент", value: "Петросян Альберт Тигранович" },
                 ].map(c => (
                   <div key={c.label} className="flex items-start gap-4">
@@ -699,7 +725,13 @@ export default function Index() {
                     </div>
                     <div>
                       <div className="text-[#6b6b6b] text-xs font-oswald uppercase tracking-wider">{c.label}</div>
-                      <div className="text-white text-sm mt-0.5 whitespace-pre-line">{c.value}</div>
+                      {c.label === "Email" ? (
+                        <a href={`mailto:${c.value}`} className="text-white text-sm mt-0.5 hover:text-[#c8102e] transition-colors block">{c.value}</a>
+                      ) : c.label === "Телефон" ? (
+                        <a href="tel:+79268417525" className="text-white text-sm mt-0.5 hover:text-[#c8102e] transition-colors block">{c.value}</a>
+                      ) : (
+                        <div className="text-white text-sm mt-0.5 whitespace-pre-line">{c.value}</div>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -763,7 +795,7 @@ export default function Index() {
                   <input type="checkbox" required checked={formData.agree} onChange={e => setFormData(p => ({ ...p, agree: e.target.checked }))}
                     className="mt-1 accent-[#c8102e]" />
                   <span className="text-[#6b6b6b] text-xs leading-relaxed group-hover:text-[#9e9e9e] transition-colors">
-                    Я согласен(на) на обработку персональных данных в соответствии с политикой конфиденциальности федерации
+                    Я согласен(на) на обработку персональных данных в соответствии с политикой конфиденциальности организации
                   </span>
                 </label>
                 <button type="submit"
@@ -808,8 +840,8 @@ export default function Index() {
               <div className="font-oswald text-xs text-white uppercase tracking-widest mb-4">Контакты</div>
               <div className="space-y-2 text-[#6b6b6b] text-xs leading-relaxed">
                 <div>г. Геленджик, ул. Тельмана, 146, пом. 3</div>
-                <div className="break-all">accounting-dep@groupgrand.ru</div>
-                <div>8 (938) 4444-529</div>
+                <a href="mailto:albert@av-prod.ru" className="block hover:text-[#c8102e] transition-colors">albert@av-prod.ru</a>
+                <a href="tel:+79268417525" className="block hover:text-[#c8102e] transition-colors">+7 (926) 841-75-25</a>
                 <div className="pt-2 text-[#3a3a3a]">ОГРН 1232300040939<br />ИНН 2304081076</div>
               </div>
               <div className="mt-4 flex gap-3">
