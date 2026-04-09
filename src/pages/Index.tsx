@@ -4,6 +4,7 @@ import Icon from "@/components/ui/icon";
 const HERO_IMG = "https://cdn.poehali.dev/projects/5677d6d2-a4f7-4a68-86b2-fdefc661cf12/files/9f10a707-7aa7-457a-861f-084d7ccc2369.jpg";
 const PARK_IMG = "https://cdn.poehali.dev/projects/5677d6d2-a4f7-4a68-86b2-fdefc661cf12/files/f0f5d117-f9db-4016-a721-d62ddfab4368.jpg";
 const KIDS_IMG = "https://cdn.poehali.dev/projects/5677d6d2-a4f7-4a68-86b2-fdefc661cf12/files/e683d7f4-1c4e-4c53-a668-52628cc0a6cb.jpg";
+const LOGO = "https://cdn.poehali.dev/projects/5677d6d2-a4f7-4a68-86b2-fdefc661cf12/bucket/79efd1ce-1753-462d-8110-f090acd91938.png";
 
 const NAV_ITEMS = [
   { id: "about", label: "О федерации" },
@@ -92,14 +93,8 @@ export default function Index() {
       {/* ═══ HEADER ═══ */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-sm border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
-          <button onClick={() => scrollTo("hero")} className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-[#c8102e] flex items-center justify-center rounded-sm">
-              <Icon name="Bike" size={18} className="text-white" />
-            </div>
-            <div className="leading-tight">
-              <div className="font-oswald text-sm font-semibold tracking-wide text-white uppercase leading-none">Федерация</div>
-              <div className="text-[10px] text-[#9e9e9e] tracking-wider uppercase leading-none mt-0.5">мотоспорта и квадроспорта</div>
-            </div>
+          <button onClick={() => scrollTo("hero")} className="flex items-center group">
+            <img src={LOGO} alt="Федерация мотоциклетного и квадроциклетного спорта" className="h-8 sm:h-10 w-auto object-contain transition-opacity group-hover:opacity-80" />
           </button>
 
           <nav className="hidden lg:flex items-center gap-5">
@@ -662,17 +657,9 @@ export default function Index() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
             <div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-8 h-8 bg-[#c8102e] flex items-center justify-center rounded-sm">
-                  <Icon name="Bike" size={18} className="text-white" />
-                </div>
-                <div>
-                  <div className="font-oswald text-sm text-white uppercase tracking-wide leading-tight">Федерация</div>
-                  <div className="text-[#6b6b6b] text-xs">мотоспорта и квадроспорта</div>
-                </div>
-              </div>
+              <img src={LOGO} alt="Федерация мотоциклетного и квадроциклетного спорта" className="h-10 w-auto object-contain mb-5" />
               <p className="text-[#6b6b6b] text-xs leading-relaxed">
-                Официальная общественная организация. Геленджик, Краснодарский край.
+                Официальная общественная организация по развитию мотоциклетного и квадроциклетного спорта. Геленджик, Краснодарский край.
               </p>
             </div>
             <div>
