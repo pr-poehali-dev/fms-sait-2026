@@ -17,7 +17,7 @@ export const PARTNERS = [
   "Форсаж",
   "LAVR",
   "КТЗ",
-  "Reli Oil",
+  "Relynolli",
   "ФМС Краснодарского края",
   "CFMOTO",
   "AWM Trade",
