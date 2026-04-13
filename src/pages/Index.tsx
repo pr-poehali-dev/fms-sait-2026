@@ -2,7 +2,7 @@ import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
 const HERO_IMG = "https://cdn.poehali.dev/projects/5677d6d2-a4f7-4a68-86b2-fdefc661cf12/files/9f10a707-7aa7-457a-861f-084d7ccc2369.jpg";
-const PARK_IMG = "https://cdn.poehali.dev/projects/5677d6d2-a4f7-4a68-86b2-fdefc661cf12/files/f0f5d117-f9db-4016-a721-d62ddfab4368.jpg";
+const PARK_IMG = "https://cdn.poehali.dev/projects/5677d6d2-a4f7-4a68-86b2-fdefc661cf12/files/1ddda643-a81b-4c43-9546-b0437b229491.jpg";
 const KIDS_IMG = "https://cdn.poehali.dev/projects/5677d6d2-a4f7-4a68-86b2-fdefc661cf12/files/e683d7f4-1c4e-4c53-a668-52628cc0a6cb.jpg";
 const LOGO = "https://cdn.poehali.dev/projects/5677d6d2-a4f7-4a68-86b2-fdefc661cf12/bucket/79efd1ce-1753-462d-8110-f090acd91938.png";
 
@@ -10,7 +10,6 @@ const NAV_ITEMS = [
   { id: "about", label: "Об организации" },
   { id: "directions", label: "Направления" },
   { id: "calendar", label: "Календарь" },
-  { id: "news", label: "Новости" },
   { id: "park", label: "Экстрим-парк" },
   { id: "docs", label: "Документы" },
   { id: "partners", label: "Партнёры" },
@@ -18,43 +17,41 @@ const NAV_ITEMS = [
 ];
 
 const PARTNERS = [
-  "FORSAGE RACING TEAM",
-  "FMKS — Федерация мотоспорта",
-  "Administration of Gelendzhik",
-  "Минспорта Краснодарского края",
-  "KTM Russia",
-  "Husqvarna Motorcycles",
-  "Yamaha Motor",
-  "Motul",
-  "Shot Racing",
-  "Leatt",
-  "Rockstar Energy",
-  "GoPro",
+  "Форсаж",
+  "LAVR",
+  "КТЗ",
+  "Reli Oil",
+  "ФМС Краснодарского края",
+  "CFMOTO",
+  "AWM Trade",
+  "Puller",
+  "Dragonfly",
+  "Gorilla",
+  "Red Finch",
+  "Терек Радио",
 ];
 
 const DIRECTIONS = [
-  { icon: "Bike", title: "Эндуро", desc: "Кросс-кантри по бездорожью и труднопроходимым маршрутам — спорт высоких скоростей и технической выносливости." },
-  { icon: "Mountain", title: "Тур-эндуро", desc: "Многодневные маршрутные соревнования на выносливость по живописным природным территориям." },
-  { icon: "Compass", title: "Adventure", desc: "Дальние путешествия на мотоцикле — сочетание спорта, туризма и открытий." },
-  { icon: "Map", title: "Мототуризм", desc: "Организация маршрутных мотопробегов, туров и клубных поездок с соблюдением стандартов безопасности." },
-  { icon: "RotateCcw", title: "Мотоджимхана", desc: "Фигурное вождение на закрытых площадках — дисциплина точности, концентрации и мастерства." },
-  { icon: "Tractor", title: "Квадроциклетный спорт", desc: "Соревнования и тренировки на квадроциклах: кросс, эндуро, ориентирование по трассе." },
-  { icon: "Users", title: "Детский и юношеский спорт", desc: "Тренировки, школы и соревнования для детей от 5 лет. Безопасная среда, профессиональные инструкторы." },
-  { icon: "GraduationCap", title: "Обучение и безопасность", desc: "Курсы и мастер-классы по технике езды, правилам безопасной эксплуатации мототехники." },
-  { icon: "Trophy", title: "Массовые мероприятия", desc: "Открытые старты, семейные заезды, фестивали мотокультуры и благотворительные пробеги." },
-  { icon: "Building2", title: "Инфраструктурные проекты", desc: "Создание и развитие спортивных объектов, трасс, технических центров и учебных площадок." },
+  { icon: "Bike", title: "Эндуро", desc: "Соревнования и тренировки по бездорожью и труднопроходимым маршрутам. Дисциплина, требующая высокой технической выносливости и физической подготовки." },
+  { icon: "Mountain", title: "Тур-эндуро / Адвенчер", desc: "Многодневные маршрутные соревнования и экспедиции на выносливость по пересечённой местности. Объединяет навыки эндуро с дальними переходами." },
+  { icon: "Zap", title: "Эндуро-контест", desc: "Короткие интенсивные испытания на специально подготовленных участках — формат на технику, скорость и мастерство преодоления препятствий." },
+  { icon: "Map", title: "Мототуризм", desc: "Дальние выезды, экспедиционные маршруты и путешествия на мотоцикле. Организация маршрутных мотопробегов и туров в экспедиционном формате." },
+  { icon: "RotateCcw", title: "Мотоджимхана", desc: "Техника управления мотоциклом на закрытой площадке: точное маневрирование, координация, контроль баланса и скорости на минимальном пространстве." },
+  { icon: "Tractor", title: "Квадроциклетный спорт", desc: "Гонки и тренировки на квадроциклах: mud racing, mud ring, трофи-рейд, кантри-кросс. Соревнования на выносливость и технику вождения." },
+  { icon: "Users", title: "Детский и юношеский спорт", desc: "Тренировки и соревнования для детей от 5 лет: детское эндуро и детские квадроциклы. Безопасная среда, сертифицированные инструкторы." },
+  { icon: "Trophy", title: "Массовые мероприятия", desc: "Фестивали, чемпионаты, открытые старты, семейные заезды, благотворительные пробеги и официальные мероприятия организации." },
+  { icon: "Building2", title: "Инфраструктурные проекты", desc: "Создание и развитие спортивных объектов, трасс, тренировочных зон и инфраструктуры для соревнований, обучения и массовых мероприятий." },
+  { icon: "Handshake", title: "Взаимодействие", desc: "Сотрудничество с Федерацией мотоциклетного спорта Краснодарского края, Федерацией мотоциклетного спорта Республики Адыгея, органами власти и партнёрами." },
 ];
 
 type EventStatus = "own" | "participate" | "plan";
-type EventDiscipline = "enduro" | "turenduro" | "quad" | "adventure" | "kids" | "festival";
+type EventDiscipline = "enduro" | "turenduro" | "quad" | "kids";
 
 const DISCIPLINE_LABELS: Record<EventDiscipline, string> = {
   enduro: "Эндуро",
-  turenduro: "Турэндуро / Ралли",
-  quad: "Квадро",
-  adventure: "Adventure",
+  turenduro: "Тур-эндуро",
+  quad: "Квадроциклы",
   kids: "Детские",
-  festival: "Фестивали",
 };
 
 const STATUS_LABELS: Record<EventStatus, string> = {
@@ -69,41 +66,36 @@ const EVENTS_2026: {
   place: string;
   status: EventStatus;
   discipline: EventDiscipline;
-  confirmed: boolean;
 }[] = [
-  { date: "Дата уточняется", title: "«Мокрая Миля»", place: "Геленджик / Краснодарский край", status: "own", discipline: "festival", confirmed: false },
-  { date: "Дата уточняется", title: "Этап Чемпионата КК по эндуро «Енотка»", place: "Краснодарский край", status: "own", discipline: "enduro", confirmed: false },
-  { date: "Дата уточняется", title: "ADVENTURE RALLY GELENDZHIK", place: "Геленджик", status: "own", discipline: "adventure", confirmed: false },
-  { date: "Дата уточняется", title: "Mud Racing / Кубок Адыгеи и Краснодарского края", place: "Адыгея / КК", status: "participate", discipline: "quad", confirmed: false },
-  { date: "Дата уточняется", title: "«Маламино»", place: "Краснодарский край", status: "participate", discipline: "quad", confirmed: false },
-  { date: "Дата уточняется", title: "«Ушатун Трофи»", place: "Россия", status: "participate", discipline: "quad", confirmed: false },
-  { date: "Дата уточняется", title: "Этап Чемпионата России", place: "Воронеж", status: "participate", discipline: "quad", confirmed: false },
-  { date: "Дата уточняется", title: "Детская гонка на квадроциклах", place: "Локация уточняется", status: "participate", discipline: "kids", confirmed: false },
-  { date: "Дата уточняется", title: "«Алла 11.0»", place: "Россия", status: "participate", discipline: "quad", confirmed: false },
-  { date: "Дата уточняется", title: "Кубок России", place: "Иваново", status: "participate", discipline: "quad", confirmed: false },
-  { date: "Дата уточняется", title: "Prime Ring", place: "Россия", status: "participate", discipline: "quad", confirmed: false },
-  { date: "Дата уточняется", title: "«Золото Жигулей»", place: "Самарская область", status: "participate", discipline: "quad", confirmed: false },
-  { date: "Дата уточняется", title: "«Пятигорск 9.0»", place: "Пятигорск", status: "participate", discipline: "quad", confirmed: false },
-  { date: "Дата уточняется", title: "«Енотка»", place: "Краснодарский край", status: "participate", discipline: "enduro", confirmed: false },
-  { date: "Дата уточняется", title: "«Небугсберг»", place: "Небуг, КК", status: "participate", discipline: "enduro", confirmed: false },
-  { date: "Дата уточняется", title: "«100% Эндуро»", place: "Россия", status: "participate", discipline: "enduro", confirmed: false },
-  { date: "Дата уточняется", title: "«Золотая Гора»", place: "Россия", status: "participate", discipline: "enduro", confirmed: false },
-  { date: "Дата уточняется", title: "«Схауат»", place: "Адыгея", status: "participate", discipline: "enduro", confirmed: false },
-  { date: "Дата уточняется", title: "«Арманьяк»", place: "Россия", status: "participate", discipline: "enduro", confirmed: false },
-  { date: "Дата уточняется", title: "«Последний Богатырь»", place: "Россия", status: "participate", discipline: "enduro", confirmed: false },
-  { date: "Дата уточняется", title: "«Безумка»", place: "Россия", status: "participate", discipline: "enduro", confirmed: false },
-  { date: "Дата уточняется", title: "«Золото Кагана»", place: "Астраханская область", status: "participate", discipline: "turenduro", confirmed: false },
-  { date: "Дата уточняется", title: "Alpha Race", place: "Россия", status: "participate", discipline: "turenduro", confirmed: false },
-  { date: "Дата уточняется", title: "«Тихий Дон»", place: "Ростовская область", status: "participate", discipline: "turenduro", confirmed: false },
-  { date: "Дата уточняется", title: "«Князь Владимир»", place: "Россия", status: "participate", discipline: "turenduro", confirmed: false },
-  { date: "Дата уточняется", title: "«Баха»", place: "Россия", status: "participate", discipline: "turenduro", confirmed: false },
-  { date: "Дата уточняется", title: "«Великая Степь»", place: "Россия", status: "participate", discipline: "turenduro", confirmed: false },
+  { date: "Январь 2026", title: "Мокрая миля", place: "Геленджик / Краснодарский край", status: "own", discipline: "enduro" },
+  { date: "Март 2026", title: "Енотка — этап Чемпионата КК по эндуро", place: "Краснодарский край", status: "own", discipline: "enduro" },
+  { date: "Сентябрь 2026", title: "Adventure Rally Gelendzhik", place: "Геленджик", status: "own", discipline: "turenduro" },
+  { date: "Апрель 2026", title: "Mud Racing — Кубок Адыгеи / Краснодарского края", place: "Адыгея / Краснодарский край", status: "participate", discipline: "quad" },
+  { date: "Дата уточняется", title: "Маламино — этап Чемпионата КК по квадроциклам", place: "Краснодарский край", status: "participate", discipline: "quad" },
+  { date: "Дата уточняется", title: "Uchetun Trophy", place: "Россия", status: "participate", discipline: "quad" },
+  { date: "Дата уточняется", title: "Этап Чемпионата России", place: "Воронеж", status: "participate", discipline: "quad" },
+  { date: "Дата уточняется", title: "Детская гонка на квадроциклах", place: "Геленджик", status: "plan", discipline: "kids" },
+  { date: "Дата уточняется", title: "Алла 11", place: "Россия", status: "own", discipline: "quad" },
+  { date: "Дата уточняется", title: "Кубок России", place: "Иваново", status: "participate", discipline: "quad" },
+  { date: "Дата уточняется", title: "Prime Ring", place: "Россия", status: "participate", discipline: "quad" },
+  { date: "Дата уточняется", title: "Золото Жигулей", place: "Самарская область", status: "participate", discipline: "quad" },
+  { date: "Дата уточняется", title: "Пятигорск 9.0", place: "Пятигорск", status: "participate", discipline: "quad" },
+  { date: "Дата уточняется", title: "Шахаут", place: "Республика Адыгея", status: "participate", discipline: "enduro" },
+  { date: "Дата уточняется", title: "Арманьяк", place: "Россия", status: "participate", discipline: "enduro" },
+  { date: "Дата уточняется", title: "Последний богатырь", place: "Россия", status: "participate", discipline: "enduro" },
+  { date: "Дата уточняется", title: "Безумка", place: "Россия", status: "participate", discipline: "enduro" },
+  { date: "Дата уточняется", title: "Золото Кокана", place: "Астраханская область", status: "participate", discipline: "turenduro" },
+  { date: "Дата уточняется", title: "Альфа-рейс", place: "Россия", status: "participate", discipline: "turenduro" },
+  { date: "Дата уточняется", title: "Тихий Дон", place: "Ростовская область", status: "participate", discipline: "turenduro" },
+  { date: "Дата уточняется", title: "Князь Владимир", place: "Россия", status: "participate", discipline: "turenduro" },
+  { date: "Дата уточняется", title: "Баха", place: "Россия", status: "participate", discipline: "turenduro" },
+  { date: "Дата уточняется", title: "Великая степь", place: "Россия", status: "participate", discipline: "turenduro" },
 ];
 
 const NEWS = [
-  { date: "14.07.2023", tag: "Организация", title: "Организация прошла государственную регистрацию", excerpt: "Геленджикская городская общественная организация «Федерация мотоциклетного и квадроциклетного спорта» официально зарегистрирована. ОГРН 1232300040939." },
-  { date: "Новость уточняется", tag: "Экстрим-парк", title: "Ведётся работа над проектом Экстрим-парка Геленджик", excerpt: "Организация развивает концепцию многофункциональной спортивной площадки. Детали проекта дополняются по мере согласования." },
-  { date: "Новость уточняется", tag: "Детский спорт", title: "Формирование программы детско-юношеских тренировок", excerpt: "Готовится программа тренировок и соревнований для детей и подростков. Подробности и расписание будут опубликованы позже." },
+  { date: "14 июля 2023", tag: "Организация", title: "Организация прошла государственную регистрацию", excerpt: "Геленджикская городская общественная организация «Федерация мотоциклетного и квадроциклетного спорта» официально зарегистрирована. ОГРН 1232300040939." },
+  { date: "21 февраля 2025", tag: "Экстрим-парк", title: "Ведётся работа над проектом Extreme Park Gelendzhik", excerpt: "Организация развивает концепцию многофункциональной спортивной площадки для соревнований, обучения, семейного отдыха и событийного туризма." },
+  { date: "13 ноября 2024", tag: "Детский спорт", title: "Формирование программы детско-юношеских тренировок", excerpt: "Разрабатывается программа тренировок и соревнований для детей и подростков: детское эндуро и детские квадроциклы." },
 ];
 
 const DOCS_AVAILABLE = [
@@ -117,15 +109,6 @@ const DOCS_AVAILABLE = [
 
 function scrollTo(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-}
-
-function Placeholder({ children, size = "sm" }: { children: React.ReactNode; size?: "sm" | "md" }) {
-  return (
-    <span className={`inline-flex items-center gap-1.5 bg-yellow-300/90 text-black font-golos font-medium rounded-sm px-2 py-0.5 ${size === "md" ? "text-xs" : "text-[10px]"} uppercase tracking-wider`}>
-      <span className="w-1.5 h-1.5 bg-black rounded-full" />
-      {children}
-    </span>
-  );
 }
 
 export default function Index() {
@@ -166,7 +149,7 @@ export default function Index() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-sm border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
           <button onClick={() => scrollTo("hero")} className="flex items-center group">
-            <img src={LOGO} alt="Федерация мотоциклетного и квадроциклетного спорта" className="h-8 sm:h-10 w-auto object-contain transition-opacity group-hover:opacity-80" />
+            <img src={LOGO} alt="ФМКСГ — общественная организация" className="h-8 sm:h-10 w-auto object-contain transition-opacity group-hover:opacity-80" />
           </button>
 
           <nav className="hidden lg:flex items-center gap-5">
@@ -208,7 +191,7 @@ export default function Index() {
       {/* ═══ HERO ═══ */}
       <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={HERO_IMG} alt="Мотоспорт — Федерация" className="w-full h-full object-cover" />
+          <img src={HERO_IMG} alt="Мотоспорт — ФМКСГ" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/70 via-[#0a0a0a]/50 to-[#0a0a0a]" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/70 to-transparent" />
         </div>
@@ -288,7 +271,7 @@ export default function Index() {
                   { icon: "Award", title: "Официальный статус", desc: "Государственная регистрация" },
                   { icon: "Users", title: "Детский спорт", desc: "Секции с 5 лет" },
                   { icon: "ShieldCheck", title: "Безопасность", desc: "Стандарты и контроль" },
-                  { icon: "Handshake", title: "Партнёрство", desc: "Власть, бизнес и сообщество" },
+                  { icon: "Handshake", title: "При содействии", desc: "Официальные инстанции" },
                 ].map(f => (
                   <div key={f.title} className="bg-[#1a1a1a] border border-white/5 rounded-sm p-4 hover:border-[#c8102e]/30 transition-colors">
                     <Icon name={f.icon} size={22} className="text-[#c8102e] mb-2" />
@@ -305,7 +288,7 @@ export default function Index() {
               <div className="bg-[#1a1a1a] border border-white/5 p-8 rounded-sm space-y-6">
                 <div className="font-oswald text-2xl text-white uppercase tracking-wide">Миссия</div>
                 <blockquote className="border-l-2 border-[#c8102e] pl-6 text-[#e8e8e8] text-lg leading-relaxed italic">
-                  «Создать системную среду для развития мотоциклетного и квадроциклетного спорта в России — от детских секций до международных соревнований»
+                  «Создание системной среды для развития безопасного экстрима, включая мотоциклетный и квадроциклетный спорт в России — от детских секций до международных соревнований»
                 </blockquote>
                 <div className="space-y-3 pt-4 border-t border-white/10">
                   {[
@@ -357,11 +340,8 @@ export default function Index() {
             <div className="h-px w-12 bg-[#c8102e] mb-5" />
             <h2 className="font-oswald text-4xl sm:text-5xl font-bold uppercase tracking-tight text-white">Календарь мероприятий 2026</h2>
             <p className="text-[#9e9e9e] mt-4 max-w-2xl text-sm leading-relaxed">
-              Календарь является предварительным и дополняется по мере утверждения и поступления информации. Даты проведения уточняются.
+              Календарь дополняется по мере утверждения и поступления информации.
             </p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              <Placeholder>Даты и статусы требуют ручной сверки</Placeholder>
-            </div>
           </div>
 
           {/* Filters */}
@@ -432,7 +412,6 @@ export default function Index() {
                   <div className="flex items-center gap-2">
                     <Icon name="Calendar" size={12} className="text-[#6b6b6b]" />
                     <span className="text-[#9e9e9e] text-xs">{ev.date}</span>
-                    {!ev.confirmed && <Placeholder>уточнить</Placeholder>}
                   </div>
                   <div className="flex items-center gap-2">
                     <Icon name="MapPin" size={12} className="text-[#6b6b6b]" />
@@ -450,19 +429,10 @@ export default function Index() {
             </div>
           )}
 
-          <div className="mt-10 p-6 border border-dashed border-yellow-300/30 bg-yellow-300/5 rounded-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div>
-              <div className="flex items-center gap-2 mb-1">
-                <Icon name="AlertTriangle" size={16} className="text-yellow-300" />
-                <div className="font-oswald text-white text-sm uppercase tracking-wider">Внимание</div>
-              </div>
-              <p className="text-[#9e9e9e] text-xs max-w-xl leading-relaxed">
-                Федерация не является организатором всех перечисленных событий. Статусы «Организуем / Участвуем / Планируем» требуют ручной верификации перед публикацией.
-              </p>
-            </div>
+          <div className="mt-10 text-center">
             <button onClick={() => setActiveForm("event")}
-              className="shrink-0 text-xs text-[#c8102e] border border-[#c8102e]/30 hover:border-[#c8102e] px-5 py-2.5 rounded-sm transition-colors font-oswald uppercase tracking-wider">
-              Подать заявку
+              className="text-sm text-[#c8102e] border border-[#c8102e]/30 hover:border-[#c8102e] hover:bg-[#c8102e]/10 px-8 py-3 rounded-sm transition-all font-oswald uppercase tracking-wider">
+              Подать заявку на участие
             </button>
           </div>
         </div>
@@ -475,9 +445,6 @@ export default function Index() {
             <div>
               <div className="h-px w-12 bg-[#c8102e] mb-5" />
               <h2 className="font-oswald text-4xl sm:text-5xl font-bold uppercase tracking-tight text-white">Новости</h2>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <Placeholder>Большинство новостей — требуют публикации</Placeholder>
-              </div>
             </div>
             <div className="text-[#c8102e] text-xs font-oswald uppercase tracking-wider hidden sm:block cursor-pointer hover:text-white transition-colors">
               Все новости →
@@ -660,9 +627,6 @@ export default function Index() {
                   </div>
                 ))}
               </div>
-              <div className="flex flex-wrap gap-2">
-                <Placeholder>Логотипы — по согласованию</Placeholder>
-              </div>
             </div>
 
             <div>
@@ -813,7 +777,7 @@ export default function Index() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
             <div>
-              <img src={LOGO} alt="Федерация мотоциклетного и квадроциклетного спорта" className="h-10 w-auto object-contain mb-5" />
+              <img src={LOGO} alt="ФМКСГ — общественная организация мотоциклетного и квадроциклетного спорта" className="h-10 w-auto object-contain mb-5" />
               <p className="text-[#6b6b6b] text-xs leading-relaxed">
                 Официальная общественная организация по развитию мотоциклетного и квадроциклетного спорта. Геленджик, Краснодарский край.
               </p>
